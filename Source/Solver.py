@@ -16,3 +16,7 @@ rows = 9
 cols = 9
 BOARD = [[0 for _ in range(cols)] for _ in range(rows)]
 
+# Set up the window
+pygame.display.set_mode((WIN, WIN))
+pygame.display.set_caption("danildenha Sudoku Solver")
+
