@@ -3,8 +3,8 @@ import pygame
 pygame.init()
 
 # Window and cell sizes
-WIN = 900
-WIDTH = 100
+WIDTH = 900
+ROWS = 9
 
 # Colors
 BLACK = (255, 255, 255)
@@ -17,6 +17,17 @@ cols = 9
 BOARD = [[0 for _ in range(cols)] for _ in range(rows)]
 
 # Set up the window
-pygame.display.set_mode((WIN, WIN))
+win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
+
+def draw():
+    for row in ROWS:
+        if row%3==0:
+            thickness = 3
+        else:
+            thickness = 1
+        
+        pygame.draw.line(win, BLACK, (row*100))
+
+
 
