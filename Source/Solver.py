@@ -27,8 +27,8 @@ def draw():
             thickness = 3
         else:
             thickness = 1
-        
         pygame.draw.line(win, BLACK, (0, row* HEIGHT/ROWS), (WIDTH, row*HEIGHT/ROWS), thickness)
+        pygame.draw.line(win, BLACK, (row*WIDTH/ROWS, 0), (row*WIDTH/ROWS, HEIGHT), thickness)
 
 
 
