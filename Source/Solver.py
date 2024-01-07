@@ -44,6 +44,11 @@ class Node:
         text = font.render(str(self.value), True, BLACK)
         text_rect = text.get_rect(center=(self.col * Node.width + Node.width // 2, self.row * Node.width + Node.width // 2))
         win.blit(text, text_rect)
+    
+    def get_pos(pos):
+        x, y = pos
+        row = y // Node.width
+        col = x // Node.width
 
 
 
