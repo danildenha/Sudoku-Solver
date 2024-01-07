@@ -32,6 +32,8 @@ def draw():
         pygame.draw.line(win, BLACK, (0, row* HEIGHT/ROWS), (WIDTH, row*HEIGHT/ROWS), thickness)
         pygame.draw.line(win, BLACK, (row*WIDTH/ROWS, 0), (row*WIDTH/ROWS, HEIGHT), thickness)
 
+def selected_color():
+
 class Node:
     width = 80
     def __init__(self, value, row, col):
@@ -45,20 +47,36 @@ class Node:
         text_rect = text.get_rect(center=(self.col * Node.width + Node.width // 2, self.row * Node.width + Node.width // 2))
         win.blit(text, text_rect)
     
-    def get_pos(pos):
-        x, y = pos
-        row = y // Node.width
-        col = x // Node.width
+def get_position(pos):
+    x, y = pos
+    row = y // Node.width
+    col = x // Node.width
+    return row, col
 
 
 
 def main():
+    nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
+
+    selected = None
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                clicked_pos = pygame.mouse.get_pos()
+                row, col = get_position(clicked_pos)
+                selected = nodes[row][col]
+            if event.type == pygame.KEYDOWN:
+                if selected and event.unicode.isdigit():
+                    selected.value = int(event.unicode)
+                    selected = None  # Deselect after inputting number
+
         win.fill(WHITE)
+        for row in nodes:
+            for node in row:
+                node.draw(win)
         draw()
         pygame.display.update()
 
