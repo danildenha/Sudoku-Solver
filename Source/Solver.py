@@ -48,6 +48,8 @@ class Node:
         else:
             color = BLACK
             bg = WHITE
+
+        pygame.draw.rect(win, bg, (self.col * Node.width, self.row * Node.width, Node.width, Node.width))
         text = font.render(str(self.value), True, color)
         text_rect = text.get_rect(center=(self.col * Node.width + Node.width // 2, self.row * Node.width + Node.width // 2))
         win.blit(text, text_rect)
@@ -63,7 +65,6 @@ def get_position(pos):
 def main():
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
 
-    selected = None
     running = True
     while running:
         for event in pygame.event.get():
@@ -72,13 +73,17 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 clicked_pos = pygame.mouse.get_pos()
                 row, col = get_position(clicked_pos)
-                selected = nodes[row][col]
-                selected.selected = not selected.selected
+                for r in range(ROWS):
+                    for c in range(ROWS):
+                        nodes[r][c].selected = False  # Deselect all nodes
+                nodes[row][col].selected = True  # Select the clicked node
+
             if event.type == pygame.KEYDOWN:
-                if selected and event.unicode.isdigit():
-                    selected.value = int(event.unicode)
-                    selected.selected = False
-                    selected = None  # Deselect after inputting number
+                if event.unicode.isdigit():
+                    if any(node.selected for row in nodes for node in row):
+                        selected_node = next((node for row in nodes for node in row if node.selected), None)
+                        selected_node.value = int(event.unicode)
+                        selected_node.selected = False  # Deselect after inputting number
 
         win.fill(WHITE)
         for row in nodes:
