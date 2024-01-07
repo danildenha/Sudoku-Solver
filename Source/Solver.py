@@ -12,6 +12,7 @@ ROWS = 9
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREY = (128, 128, 128)
+BLUE = (102, 178, 255)
 
 # Fill the Board (rows and cols are equal so use only ROWS)
 BOARD = [[0 for _ in range(ROWS)] for _ in range(ROWS)]
@@ -32,8 +33,6 @@ def draw():
         pygame.draw.line(win, BLACK, (0, row* HEIGHT/ROWS), (WIDTH, row*HEIGHT/ROWS), thickness)
         pygame.draw.line(win, BLACK, (row*WIDTH/ROWS, 0), (row*WIDTH/ROWS, HEIGHT), thickness)
 
-def selected_color():
-
 class Node:
     width = 80
     def __init__(self, value, row, col):
@@ -43,7 +42,11 @@ class Node:
         self.selected = False
 
     def draw(self, win):
-        text = font.render(str(self.value), True, BLACK)
+        if self.selected:
+            color = BLUE
+        else:
+            color = BLACK
+        text = font.render(str(self.value), True, color)
         text_rect = text.get_rect(center=(self.col * Node.width + Node.width // 2, self.row * Node.width + Node.width // 2))
         win.blit(text, text_rect)
     
@@ -68,9 +71,11 @@ def main():
                 clicked_pos = pygame.mouse.get_pos()
                 row, col = get_position(clicked_pos)
                 selected = nodes[row][col]
+                selected.selected = not selected.selected
             if event.type == pygame.KEYDOWN:
                 if selected and event.unicode.isdigit():
                     selected.value = int(event.unicode)
+                    selected.selected = False
                     selected = None  # Deselect after inputting number
 
         win.fill(WHITE)
