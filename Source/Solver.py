@@ -5,7 +5,7 @@ pygame.init()
 
 # Window and cell sizes
 WIDTH = 720
-HEIGHT = 630
+HEIGHT = 720
 ROWS = 9
 
 # Colors
@@ -21,6 +21,7 @@ win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("danildenha Sudoku Solver")
 
 def draw():
+
     # We dont want to draw the first line at the top of the screen
     for row in range(1, ROWS):
         if row%3==0:
@@ -29,6 +30,14 @@ def draw():
             thickness = 1
         pygame.draw.line(win, BLACK, (0, row* HEIGHT/ROWS), (WIDTH, row*HEIGHT/ROWS), thickness)
         pygame.draw.line(win, BLACK, (row*WIDTH/ROWS, 0), (row*WIDTH/ROWS, HEIGHT), thickness)
+
+class Node:
+    size = 80
+    def __init__(self, value, row, col):
+        self.value = value
+        self.row = row
+        self.col = col
+        self.selected = False
 
 
 
