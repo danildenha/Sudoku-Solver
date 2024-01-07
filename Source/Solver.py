@@ -15,6 +15,7 @@ GREY = (128, 128, 128)
 
 # Fill the Board (rows and cols are equal so use only ROWS)
 BOARD = [[0 for _ in range(ROWS)] for _ in range(ROWS)]
+font = pygame.font.Font(None, 60)
 
 # Set up the window
 win = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -39,6 +40,11 @@ class Node:
         self.col = col
         self.selected = False
 
+    def draw(self, win):
+        text = font.render(str(self.value), True, BLACK)
+        text_rect = text.get_rect(center=(self.col * Node.width + Node.width // 2, self.row * Node.width + Node.width // 2))
+        win.blit(text, text_rect)
+
 
 
 def main():
@@ -56,6 +62,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
