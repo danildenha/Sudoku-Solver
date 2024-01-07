@@ -43,9 +43,11 @@ class Node:
 
     def draw(self, win):
         if self.selected:
-            color = BLUE
+            color = GREY
+            bg = BLUE
         else:
             color = BLACK
+            bg = WHITE
         text = font.render(str(self.value), True, color)
         text_rect = text.get_rect(center=(self.col * Node.width + Node.width // 2, self.row * Node.width + Node.width // 2))
         win.blit(text, text_rect)
