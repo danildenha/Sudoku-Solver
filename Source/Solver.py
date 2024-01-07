@@ -32,7 +32,7 @@ def draw():
         pygame.draw.line(win, BLACK, (row*WIDTH/ROWS, 0), (row*WIDTH/ROWS, HEIGHT), thickness)
 
 class Node:
-    size = 80
+    width = 80
     def __init__(self, value, row, col):
         self.value = value
         self.row = row
