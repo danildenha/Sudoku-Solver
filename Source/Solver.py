@@ -4,23 +4,11 @@ import pygame
 pygame.init()
 
 # Window and cell sizes
-WIDTH = 720
-HEIGHT = 720
 ROWS = 9
-
-# Colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-GREY = (128, 128, 128)
-BLUE = (102, 178, 255)
 
 # Fill the Board (rows and cols are equal so use only ROWS)
 BOARD = [[0 for _ in range(ROWS)] for _ in range(ROWS)]
 font = pygame.font.Font(None, 60)
-
-# Set up the window
-win = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("danildenha Sudoku Solver")
 
 def draw():
 
