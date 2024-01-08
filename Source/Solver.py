@@ -73,17 +73,18 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 clicked_pos = pygame.mouse.get_pos()
                 row, col = get_position(clicked_pos)
-                for r in range(ROWS):
-                    for c in range(ROWS):
-                        nodes[r][c].selected = False  # Deselect all nodes
-                nodes[row][col].selected = True  # Select the clicked node
+                curr = nodes[row][col]
+                #for r in range(ROWS):
+                    #for c in range(ROWS):
+                        #nodes[r][c].selected = False  # Deselect all nodes
+                curr.selected = True  # Select the clicked node
 
             if event.type == pygame.KEYDOWN:
                 if event.unicode.isdigit():
                     if any(node.selected for row in nodes for node in row):
-                        selected_node = next((node for row in nodes for node in row if node.selected), None)
-                        selected_node.value = int(event.unicode)
-                        selected_node.selected = False  # Deselect after inputting number
+                        #selected_node = next((node for row in nodes for node in row if node.selected), None)
+                        curr.value = int(event.unicode)
+                        curr.selected = False  # Deselect after inputting number
 
         win.fill(WHITE)
         for row in nodes:
