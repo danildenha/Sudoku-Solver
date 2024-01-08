@@ -1,8 +1,4 @@
 import pygame
-import sys
-sys.path.append('Screen')
-
-from Screen.display import Node, draw
 
 # Colors
 WHITE = (255, 255, 255)
@@ -15,11 +11,9 @@ ROWS = 9
 WIDTH = 720
 HEIGHT = 720
 
-# Set up the window
-win = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("danildenha Sudoku Solver")
 
-def draw():
+
+def draw(win):
 
     # We dont want to draw the first line at the top of the screen
     for row in range(1, ROWS):
