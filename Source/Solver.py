@@ -53,7 +53,7 @@ class Node:
         text = font.render(str(self.value), True, color)
         text_rect = text.get_rect(center=(self.col * Node.width + Node.width // 2, self.row * Node.width + Node.width // 2))
         win.blit(text, text_rect)
-    
+
 def get_position(pos):
     x, y = pos
     row = y // Node.width
@@ -77,13 +77,11 @@ def main():
                 row, col = get_position(clicked_pos)
                 curr.selected = False
                 curr = nodes[row][col]
-                
                 curr.selected = True  # Select the clicked node
 
             if event.type == pygame.KEYDOWN:
                 if event.unicode.isdigit():
                     if any(node.selected for row in nodes for node in row):
-                        #selected_node = next((node for row in nodes for node in row if node.selected), None)
                         curr.value = int(event.unicode)
                         curr.selected = False  # Deselect after inputting number
 
