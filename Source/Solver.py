@@ -64,6 +64,8 @@ def get_position(pos):
 
 def main():
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
+    global curr
+    curr = nodes[0][0]
 
     running = True
     while running:
@@ -73,10 +75,9 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 clicked_pos = pygame.mouse.get_pos()
                 row, col = get_position(clicked_pos)
+                curr.selected = False
                 curr = nodes[row][col]
-                #for r in range(ROWS):
-                    #for c in range(ROWS):
-                        #nodes[r][c].selected = False  # Deselect all nodes
+                
                 curr.selected = True  # Select the clicked node
 
             if event.type == pygame.KEYDOWN:
