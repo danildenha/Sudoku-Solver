@@ -2,6 +2,7 @@
 import pygame
 from display import draw
 from node import Node
+from algorithm import *
 
 
 pygame.init()
@@ -52,7 +53,10 @@ def main():
                     curr.value = 0
                     curr.selected = False
                 elif event.key == pygame.K_SPACE:
-                    #algorithm
+                    #if solve_sudoku(nodes, ROWS):
+                    #    print("Sudoku Solved!")  # Just for indication, you can modify this
+                    #else:
+                    #   print("No solution exists")
                     pass
 
             
