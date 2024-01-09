@@ -49,7 +49,10 @@ def main():
                     if any(node.selected for row in nodes for node in row):
                         curr.value = int(event.unicode)
                         curr.selected = False  # Deselect after inputting number
-                elif event.
+                elif event.key == pygame.K_SPACE:
+                    #algorithm
+                    pass
+
             
 
         win.fill(WHITE)
