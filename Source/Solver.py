@@ -1,8 +1,6 @@
 # ___________________________________________________NOT FINISHED YET____________________________________________________________
 import pygame
-import sys
-sys.path.append('/Users/danildenha/Documents/Sudoku-Solver/Visualizer/display.py')
-from Visualizer.display import draw
+from display import draw
 from node import Node
 
 
