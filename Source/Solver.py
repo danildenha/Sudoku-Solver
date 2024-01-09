@@ -11,10 +11,9 @@ BLACK = (0, 0, 0)
 # Window and cell sizes
 ROWS = 9
 WIDTH = 720
-HEIGHT = 720
 
 # Set up the window
-win = pygame.display.set_mode((WIDTH, HEIGHT))
+win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
 font = pygame.font.Font(None, 60)
 
@@ -50,6 +49,8 @@ def main():
                     if any(node.selected for row in nodes for node in row):
                         curr.value = int(event.unicode)
                         curr.selected = False  # Deselect after inputting number
+                elif event.
+            
 
         win.fill(WHITE)
         for row in nodes:
