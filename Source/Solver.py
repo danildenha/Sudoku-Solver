@@ -1,7 +1,7 @@
 # ___________________________________________________NOT FINISHED YET____________________________________________________________
 import pygame
-import sys
 from display import draw
+from node import Node
 
 pygame.init()
 
@@ -16,11 +16,6 @@ ROWS = 9
 WIDTH = 720
 HEIGHT = 720
 
-# Window and cell sizes
-ROWS = 9
-WIDTH = 720
-HEIGHT = 720
-
 # Set up the window
 win = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("danildenha Sudoku Solver")
@@ -28,30 +23,6 @@ font = pygame.font.Font(None, 60)
 
 # Fill the Board (rows and cols are equal so use only ROWS)
 BOARD = [[0 for _ in range(ROWS)] for _ in range(ROWS)]
-
-class Node:
-    width = 80
-    def __init__(self, value, row, col):
-        self.value = value
-        self.row = row
-        self.col = col
-        self.selected = False
-
-    def draw(self, win):
-        if self.selected:
-            color = GREY
-            bg = BLUE
-        else:
-            color = BLACK
-            bg = WHITE
-
-        pygame.draw.rect(win, bg, (self.col * Node.width, self.row * Node.width, Node.width, Node.width))
-        text = font.render(str(self.value), True, color)
-        text_rect = text.get_rect(center=(self.col * Node.width + Node.width // 2, self.row * Node.width + Node.width // 2))
-        if self.value != 0:
-            win.blit(text, text_rect)
-
-
 
 def get_position(pos):
     x, y = pos
@@ -86,8 +57,8 @@ def main():
         win.fill(WHITE)
         for row in nodes:
             for node in row:
-                node.draw(win)
-        draw(win)
+                node.draw(win, font)
+        draw(win, BLACK)
         pygame.display.update()
 
     pygame.quit()
