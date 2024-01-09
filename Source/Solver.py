@@ -4,12 +4,9 @@ from display import draw
 from node import Node
 
 pygame.init()
-
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-GREY = (128, 128, 128)
-BLUE = (102, 178, 255)
 
 # Window and cell sizes
 ROWS = 9
