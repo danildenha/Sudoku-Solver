@@ -18,9 +18,6 @@ win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
 font = pygame.font.Font(None, 60)
 
-# Fill the Board (rows and cols are equal so use only ROWS)
-BOARD = [[0 for _ in range(ROWS)] for _ in range(ROWS)]
-
 def get_position(pos):
     x, y = pos
     row = y // Node.width
@@ -29,6 +26,7 @@ def get_position(pos):
 
 
 def main():
+    # Fill the Board (rows and cols are equal so use only ROWS)
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
     global curr
     curr = nodes[0][0]
@@ -50,6 +48,9 @@ def main():
                     if any(node.selected for row in nodes for node in row):
                         curr.value = int(event.unicode)
                         curr.selected = False  # Deselect after inputting number
+                elif event.key == pygame.K_BACKSPACE:
+                    curr.value = 0
+                    curr.selected = False
                 elif event.key == pygame.K_SPACE:
                     #algorithm
                     pass

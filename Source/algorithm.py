@@ -1,3 +1,4 @@
 import pygame
 
-def algotithm()
+def algotithm():
+    pass
