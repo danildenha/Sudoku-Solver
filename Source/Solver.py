@@ -25,6 +25,19 @@ def get_position(pos):
     col = x // Node.width
     return row, col
 
+def algorithm(nodes, ROWS):
+    #Check if sudoku pattern provided is valid
+    if isValid(nodes):
+        pass
+    else:
+        pygame.font.init()
+        font = pygame.font.Font(None, 36)
+        text = font.render("Invalid Sudoku! Try again.", True, (255, 0, 0))
+        text_rect = text.get_rect(center=(WIDTH // 2, WIDTH // 2))
+        win.blit(text, text_rect)
+        pygame.display.update()
+        pygame.time.delay(3000)
+
 
 def main():
     # Fill the Board (rows and cols are equal so use only ROWS)
@@ -45,19 +58,19 @@ def main():
                 curr.selected = True  # Select the clicked node
 
             if event.type == pygame.KEYDOWN:
+                
                 if event.unicode.isdigit():
                     if any(node.selected for row in nodes for node in row):
                         curr.value = int(event.unicode)
                         curr.selected = False  # Deselect after inputting number
+
                 elif event.key == pygame.K_BACKSPACE:
                     curr.value = 0
                     curr.selected = False
+
                 elif event.key == pygame.K_SPACE:
-                    #if solve_sudoku(nodes, ROWS):
-                    #    print("Sudoku Solved!")  # Just for indication, you can modify this
-                    #else:
-                    #   print("No solution exists")
-                    pass
+                    algorithm(nodes, ROWS)
+                    
 
             
 
