@@ -1,6 +1,6 @@
 import pygame
 
-def isValidSudoku(self, board):
+def isValid(self, board):
         res = []
         for i in range(9):
             for j in range(9):
@@ -12,4 +12,8 @@ def isValidSudoku(self, board):
 
 
 def algotithm(nodes, ROWS):
-    pass
+    #Check if sudoku pattern provided is valid
+    if isValid(nodes):
+         pass
+    else:
+         
