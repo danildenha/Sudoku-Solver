@@ -25,18 +25,13 @@ def get_position(pos):
     col = x // Node.width
     return row, col
 
+
 def algorithm(nodes, ROWS):
     #Check if sudoku pattern provided is valid
     if isValid(nodes):
-        pass
+        print("VALID")
     else:
-        pygame.font.init()
-        font = pygame.font.Font(None, 36)
-        text = font.render("Invalid Sudoku! Try again.", True, (255, 0, 0))
-        text_rect = text.get_rect(center=(WIDTH // 2, WIDTH // 2))
-        win.blit(text, text_rect)
-        pygame.display.update()
-        pygame.time.delay(3000)
+        print("NOT VALID")
 
 
 def main():
@@ -70,6 +65,7 @@ def main():
 
                 elif event.key == pygame.K_SPACE:
                     algorithm(nodes, ROWS)
+
                     
 
             
