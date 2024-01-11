@@ -2,7 +2,7 @@ from typing import List
 import pygame
 import collections
 
-def isValidSudoku(self, board: List[List[str]]) -> bool:
+def isValid(board: List[List[str]]) -> bool:
         boardMap = collections.defaultdict(list)
         for x in range(9):
             for y in range(9):
