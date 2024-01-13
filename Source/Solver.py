@@ -25,15 +25,6 @@ def get_position(pos):
     col = x // Node.width
     return row, col
 
-def isValidMove(curr_node, value, nodes):
-    # Check if placing 'value' in 'curr_node' is a valid move
-    row_valid = all(node.value != value for node in nodes[curr_node.row])
-    col_valid = all(node.value != value for row in nodes for node in row[curr_node.col])
-    box_valid = all(node.value != value for row in nodes[curr_node.row // 3 * 3: (curr_node.row // 3 + 1) * 3]
-                    for node in row[curr_node.col // 3 * 3: (curr_node.col // 3 + 1) * 3])
-
-    return row_valid and col_valid and box_valid
-
 def isValid(nodes):
     for row in nodes:
         for node in row:
@@ -50,11 +41,6 @@ def algorithm(nodes, ROWS):
     else:
         print("NOT VALID")
         # Highlight incorrect nodes in red
-        for row in nodes:
-            for node in row:
-                if node.value != 0 and not isValidMove(node, node.value, nodes):
-                    node.color = (255, 0, 0)
-
 #=========================================================================================
 
 def main():
