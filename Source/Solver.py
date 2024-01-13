@@ -25,22 +25,6 @@ def get_position(pos):
     col = x // Node.width
     return row, col
 
-def isValid(nodes):
-    for row in nodes:
-        for node in row:
-            if node.value != 0 and not isValidMove(node, node.value, nodes):
-                return False
-    return True
-
-def algorithm(nodes, ROWS):
-    # Check if the sudoku pattern provided is valid
-    if isValid(nodes):
-        print("VALID")
-        # Start solving the Sudoku puzzle here
-        # You can add your solving logic or function calls
-    else:
-        print("NOT VALID")
-        # Highlight incorrect nodes in red
 #=========================================================================================
 
 def main():
@@ -73,11 +57,11 @@ def main():
                     curr.selected = False
 
                 elif event.key == pygame.K_SPACE:
-                    algorithm(nodes, ROWS)
-
-                    
-
-            
+                    if solve_sudoku(nodes, ROWS):
+                        print("Sudoku Solved!")  # Just for indication, you can modify this
+                    else:
+                        print("No solution exists")
+  
 
         win.fill(WHITE)
         for row in nodes:
