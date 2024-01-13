@@ -58,7 +58,7 @@ def main():
 
                 elif event.key == pygame.K_SPACE:
                     if solve_sudoku(nodes, ROWS):
-                        print("Sudoku Solved!")  # Just for indication, you can modify this
+                        print("Sudoku Solved!")
                     else:
                         print("No solution exists")
   
