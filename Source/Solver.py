@@ -9,15 +9,15 @@ pygame.init()
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-
 # Window and cell sizes
 ROWS = 9
 WIDTH = 720
-
 # Set up the window
 win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
 font = pygame.font.Font(None, 60)
+
+
 
 def get_position(pos):
     x, y = pos
@@ -28,7 +28,7 @@ def get_position(pos):
 
 def algorithm(nodes, ROWS):
     #Check if sudoku pattern provided is valid
-    if isValid(nodes):
+    if isValid(nodes) is True:
         print("VALID")
     else:
         print("NOT VALID")
