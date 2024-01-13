@@ -17,7 +17,7 @@ win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
 font = pygame.font.Font(None, 60)
 
-
+#=========================================================================================
 
 def get_position(pos):
     x, y = pos
@@ -33,6 +33,7 @@ def algorithm(nodes, ROWS):
     else:
         print("NOT VALID")
 
+#=========================================================================================
 
 def main():
     # Fill the Board (rows and cols are equal so use only ROWS)
