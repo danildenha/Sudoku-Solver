@@ -25,13 +25,13 @@ def is_valid(node, value, nodes, ROWS):
 
 
 def solve_sudoku(nodes, ROWS):
-    for i in range(ROWS):
-        for j in range(ROWS):
-            if nodes[i][j].value == 0:
+    for row in range(ROWS):
+        for col in range(ROWS):
+            if nodes[row][col].value == 0:
                 for value in range(1, ROWS + 1):
-                    nodes[i][j].value = value
-                    if is_valid(nodes[i][j], value, nodes, ROWS) and solve_sudoku(nodes, ROWS):
+                    nodes[row][col].value = value
+                    if is_valid(nodes[row][col], value, nodes, ROWS) and solve_sudoku(nodes, ROWS):
                         return True
-                    nodes[i][j].value = 0
+                    nodes[row][col].value = 0
                 return False
     return True
