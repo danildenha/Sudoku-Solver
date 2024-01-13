@@ -25,9 +25,33 @@ def get_position(pos):
     col = x // Node.width
     return row, col
 
+def solve_sudoku_step_by_step(nodes, ROWS):
+    for i in range(ROWS):
+        for j in range(ROWS):
+            if nodes[i][j].value == 0:
+                for value in range(1, ROWS + 1):
+                    nodes[i][j].value = value
+                    if is_valid(nodes[i][j], value, nodes, ROWS):
+                        pygame.time.delay(100)  # Add a delay to visualize the solving step
+                        win.fill(WHITE)
+                        for row in nodes:
+                            for node in row:
+                                node.draw(win, font)
+                        draw(win, BLACK)
+                        pygame.display.update()
+                        pygame.event.get()  # Handle events to avoid freezing
+                        pygame.time.delay(100)  # Another delay for better visualization
+                        if solve_sudoku_step_by_step(nodes, ROWS):
+                            return True
+                    nodes[i][j].value = 0
+                return False
+    return True
+
 #=========================================================================================
+SOLVING = False
 
 def main():
+    global SOLVING
     # Fill the Board (rows and cols are equal so use only ROWS)
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
     global curr
@@ -57,6 +81,12 @@ def main():
                     curr.selected = False
 
                 elif event.key == pygame.K_SPACE:
+                    if not SOLVING:
+                        SOLVING = True
+                        solve_sudoku_step_by_step(nodes, ROWS)  # Call a new step-by-step solving function
+                    else:
+                        SOLVING = False
+                elif event.key == pygame.K_s:
                     if solve_sudoku(nodes, ROWS):
                         print("Sudoku Solved!")
                     else:

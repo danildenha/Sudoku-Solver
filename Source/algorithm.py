@@ -23,7 +23,6 @@ def is_valid(node, value, nodes, ROWS):
     
     return True
 
-
 def solve_sudoku(nodes, ROWS):
     for row in range(ROWS):
         for col in range(ROWS):
