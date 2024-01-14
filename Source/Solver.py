@@ -61,7 +61,11 @@ def main():
                     else:
                         print("No solution exists")
                 elif event.key == pygame.K_c:
-                    solve_one_step(nodes)
+                    if solve_one_step(nodes):
+                        print("Here is a hint Solved!")
+                    else:
+                        print("No solution exists")
+
   
 
         win.fill(WHITE)
