@@ -61,6 +61,8 @@ def main():
                         print("Sudoku Solved!")
                     else:
                         print("No solution exists")
+                elif event.key == pygame.K_c:
+                    solve_one_step(nodes)
   
 
         win.fill(WHITE)
