@@ -18,16 +18,6 @@ pygame.display.set_caption("danildenha Sudoku Solver")
 font = pygame.font.Font(None, 60)
 
 #=========================================================================================
-
-def get_position(pos):
-    x, y = pos
-    row = y // Node.width
-    col = x // Node.width
-    return row, col
-
-
-
-#=========================================================================================
 SOLVING = False
 
 def main():
@@ -44,7 +34,7 @@ def main():
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 clicked_pos = pygame.mouse.get_pos()
-                row, col = get_position(clicked_pos)
+                row, col = get_position(clicked_pos, Node)
                 curr.selected = False
                 curr = nodes[row][col]
                 curr.selected = True  # Select the clicked node
@@ -63,7 +53,7 @@ def main():
                 elif event.key == pygame.K_SPACE:
                     if not SOLVING:
                         SOLVING = True
-                        solve_sudoku_step_by_step(nodes, ROWS)  # Call a new step-by-step solving function
+                        solve_sudoku_step_by_step(nodes, ROWS, win)  # Call a new step-by-step solving function
                     else:
                         SOLVING = False
                 elif event.key == pygame.K_s:

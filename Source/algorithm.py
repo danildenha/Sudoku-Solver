@@ -2,6 +2,12 @@ from typing import List
 import pygame
 import collections
 
+def get_position(pos, Node):
+    x, y = pos
+    row = y // Node.width
+    col = x // Node.width
+    return row, col
+
 def is_valid(node, value, nodes, ROWS):
     # Check row
     for i in range(ROWS):
@@ -23,7 +29,7 @@ def is_valid(node, value, nodes, ROWS):
     
     return True
 
-def solve_sudoku_step_by_step(nodes, ROWS):
+def solve_sudoku_step_by_step(nodes, ROWS, win):
     for i in range(ROWS):
         for j in range(ROWS):
             if nodes[i][j].value == 0:
