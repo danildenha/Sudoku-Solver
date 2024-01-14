@@ -1,6 +1,6 @@
-from typing import List
 import pygame
 import collections
+from Solver import BLACK, WHITE, win, font, Node, ROWS
 
 def get_position(pos, Node):
     x, y = pos
@@ -8,7 +8,7 @@ def get_position(pos, Node):
     col = x // Node.width
     return row, col
 
-def is_valid(node, value, nodes, ROWS):
+def is_valid(node, value, nodes):
     # Check row
     for i in range(ROWS):
         if nodes[node.row][i].value == value and nodes[node.row][i] != node:
@@ -29,7 +29,7 @@ def is_valid(node, value, nodes, ROWS):
     
     return True
 
-def solve_sudoku_step_by_step(nodes, ROWS, win):
+def solve_sudoku_step_by_step(nodes):
     for i in range(ROWS):
         for j in range(ROWS):
             if nodes[i][j].value == 0:
@@ -51,7 +51,7 @@ def solve_sudoku_step_by_step(nodes, ROWS, win):
                 return False
     return True
 
-def solve_sudoku(nodes, ROWS):
+def solve_sudoku(nodes):
     for row in range(ROWS):
         for col in range(ROWS):
             if nodes[row][col].value == 0:

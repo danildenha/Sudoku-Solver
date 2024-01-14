@@ -53,7 +53,7 @@ def main():
                 elif event.key == pygame.K_SPACE:
                     if not SOLVING:
                         SOLVING = True
-                        solve_sudoku_step_by_step(nodes, ROWS, win)  # Call a new step-by-step solving function
+                        solve_sudoku_step_by_step(nodes)  # Call a new step-by-step solving function
                     else:
                         SOLVING = False
                 elif event.key == pygame.K_s:
