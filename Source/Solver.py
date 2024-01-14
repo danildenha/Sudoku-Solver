@@ -23,7 +23,6 @@ SOLVING = False
 def main():
     global SOLVING
     error_message = ""
-    # Fill the Board (rows and cols are equal so use only ROWS)
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
     global curr
     curr = nodes[0][0]
@@ -33,15 +32,14 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            elif event.type == pygame.MOUSEBUTTONDOWN:
                 clicked_pos = pygame.mouse.get_pos()
                 row, col = get_position(clicked_pos, Node)
                 curr.selected = False
                 curr = nodes[row][col]
                 curr.selected = True  # Select the clicked node
 
-            if event.type == pygame.KEYDOWN:
-                
+            elif event.type == pygame.KEYDOWN:
                 if event.unicode.isdigit():
                     if any(node.selected for row in nodes for node in row):
                         curr.value = int(event.unicode)
@@ -50,7 +48,7 @@ def main():
                             error_message = ""
                         else:
                             error_message = "Invalid Move! Try Again."
-                            curr.value = 0 
+                            curr.value = 0
 
                 elif event.key == pygame.K_BACKSPACE:
                     curr.value = 0
@@ -72,14 +70,14 @@ def main():
                     else:
                         print("No solution exists")
 
-  
-
+        # Update the display outside of the event loop
         win.fill(WHITE)
         for row in nodes:
             for node in row:
                 node.draw(win, font)
         draw(win, BLACK)
 
+        # Display error message
         if error_message:
             error_text = font.render(error_message, True, (255, 0, 0))
             error_rect = error_text.get_rect(center=(WIDTH // 2, WIDTH + 20))

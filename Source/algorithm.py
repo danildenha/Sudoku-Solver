@@ -68,9 +68,7 @@ def solve_one_step(nodes):
                         pygame.display.update()
                         pygame.event.get()  # Handle events to avoid freezing
                         pygame.time.delay(100)  # Another delay for better visualization
-
-                        if solve_one_step(nodes):
-                            return True  # Continue searching for the next solution
+                        return True
 
                 nodes[i][j].value = 0
                 return False  # Return False only after trying all possible values for the current cell
