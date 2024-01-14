@@ -49,7 +49,6 @@ def main():
                 elif event.key == pygame.K_BACKSPACE:
                     curr.value = 0
                     curr.selected = False
-
                 elif event.key == pygame.K_SPACE:
                     if not SOLVING:
                         SOLVING = True

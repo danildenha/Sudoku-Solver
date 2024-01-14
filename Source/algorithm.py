@@ -47,6 +47,7 @@ def solve_sudoku_step_by_step(nodes):
                         pygame.time.delay(50)  # Another delay for better visualization
                         if solve_sudoku_step_by_step(nodes):
                             return True
+                        
                     nodes[i][j].value = 0
                 return False
     return True
