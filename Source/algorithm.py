@@ -34,16 +34,14 @@ def solve_sudoku_step_by_step(nodes):
         for j in range(ROWS):
             if nodes[i][j].value == 0:
                 for value in range(1, ROWS + 1):
-                    nodes[i][j].value = value
                     if is_valid(nodes[i][j], value, nodes):
+                        nodes[i][j].value = value
                         pygame.time.delay(50)  # Add a delay to visualize the solving step
-                        win.fill(WHITE)
                         for row in nodes:
                             for node in row:
                                 node.draw(win, font)
                         draw(win, BLACK)
                         pygame.display.update()
-                        pygame.event.get()  # Handle events to avoid freezing
                         pygame.time.delay(50)  # Another delay for better visualization
                         if solve_sudoku_step_by_step(nodes):
                             return True
@@ -57,23 +55,23 @@ def solve_one_step(nodes):
         for j in range(ROWS):
             if nodes[i][j].value == 0:
                 for value in range(1, ROWS + 1):
-                    nodes[i][j].value = value
                     if is_valid(nodes[i][j], value, nodes):
-                        pygame.time.delay(100)  # Add a delay to visualize the solving step
-                        win.fill(WHITE)
-                        for row in nodes:
-                            for node in row:
-                                node.draw(win, font)
-                        draw(win, BLACK)
+                        nodes[i][j].value = value
+                        pygame.time.delay(50) # Add a delay to visualize the solving step
+                        draw(win, BLACK) 
+                        break
+                        #for row in nodes:
+                        #    for node in row:
+                        #        node.draw(win, font)
                         pygame.display.update()
-                        pygame.event.get()  # Handle events to avoid freezing
-                        pygame.time.delay(100)  # Another delay for better visualization
-                        return True
-
-                nodes[i][j].value = 0
-                return False  # Return False only after trying all possible values for the current cell
-
+                        pygame.time.delay(50)  # Another delay for better visualization
+                        if solve_sudoku_step_by_step(nodes):
+                            return True
+                        
+                    nodes[i][j].value = 0
+                return False
     return True
+
 
 
 def solve_sudoku(nodes):

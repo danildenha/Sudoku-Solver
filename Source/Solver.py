@@ -42,8 +42,8 @@ def main():
             elif event.type == pygame.KEYDOWN:
                 if event.unicode.isdigit():
                     if any(node.selected for row in nodes for node in row):
-                        curr.value = int(event.unicode)
-                        if is_valid(curr, curr.value, nodes):
+                        if is_valid(curr, int(event.unicode), nodes):
+                            curr.value = int(event.unicode)
                             curr.selected = False  # Deselect after inputting number
                         else:
                             curr.value = 0
@@ -58,7 +58,7 @@ def main():
                         solve_sudoku_step_by_step(nodes)  # Call a new step-by-step solving function
                     else:
                         SOLVING = False
-                        
+
                 elif event.key == pygame.K_s:
                     if solve_sudoku(nodes):
                         print("Sudoku Solved!")
