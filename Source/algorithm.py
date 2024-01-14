@@ -1,6 +1,6 @@
 import pygame
 import collections
-from Solver import BLACK, WHITE, win, font, Node, ROWS
+from Solver import BLACK, WHITE, win, font, Node, ROWS, draw
 
 def get_position(pos, Node):
     x, y = pos
@@ -35,7 +35,7 @@ def solve_sudoku_step_by_step(nodes):
             if nodes[i][j].value == 0:
                 for value in range(1, ROWS + 1):
                     nodes[i][j].value = value
-                    if is_valid(nodes[i][j], value, nodes, ROWS):
+                    if is_valid(nodes[i][j], value, nodes):
                         pygame.time.delay(100)  # Add a delay to visualize the solving step
                         win.fill(WHITE)
                         for row in nodes:
@@ -45,7 +45,7 @@ def solve_sudoku_step_by_step(nodes):
                         pygame.display.update()
                         pygame.event.get()  # Handle events to avoid freezing
                         pygame.time.delay(100)  # Another delay for better visualization
-                        if solve_sudoku_step_by_step(nodes, ROWS):
+                        if solve_sudoku_step_by_step(nodes):
                             return True
                     nodes[i][j].value = 0
                 return False
@@ -57,7 +57,7 @@ def solve_sudoku(nodes):
             if nodes[row][col].value == 0:
                 for value in range(1, ROWS + 1):
                     nodes[row][col].value = value
-                    if is_valid(nodes[row][col], value, nodes, ROWS) and solve_sudoku(nodes, ROWS):
+                    if is_valid(nodes[row][col], value, nodes) and solve_sudoku(nodes):
                         return True
                     nodes[row][col].value = 0
                 return False

@@ -57,7 +57,7 @@ def main():
                     else:
                         SOLVING = False
                 elif event.key == pygame.K_s:
-                    if solve_sudoku(nodes, ROWS):
+                    if solve_sudoku(nodes):
                         print("Sudoku Solved!")
                     else:
                         print("No solution exists")
