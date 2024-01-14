@@ -45,20 +45,20 @@ def main():
                         curr.value = int(event.unicode)
                         if is_valid(curr, curr.value, nodes):
                             curr.selected = False  # Deselect after inputting number
-                            error_message = ""
                         else:
-                            error_message = "Invalid Move! Try Again."
                             curr.value = 0
 
                 elif event.key == pygame.K_BACKSPACE:
                     curr.value = 0
                     curr.selected = False
+
                 elif event.key == pygame.K_SPACE:
                     if not SOLVING:
                         SOLVING = True
                         solve_sudoku_step_by_step(nodes)  # Call a new step-by-step solving function
                     else:
                         SOLVING = False
+                        
                 elif event.key == pygame.K_s:
                     if solve_sudoku(nodes):
                         print("Sudoku Solved!")
@@ -76,12 +76,6 @@ def main():
             for node in row:
                 node.draw(win, font)
         draw(win, BLACK)
-
-        # Display error message
-        if error_message:
-            error_text = font.render(error_message, True, (255, 0, 0))
-            error_rect = error_text.get_rect(center=(WIDTH // 2, WIDTH + 20))
-            win.blit(error_text, error_rect)
 
         pygame.display.update()
 
