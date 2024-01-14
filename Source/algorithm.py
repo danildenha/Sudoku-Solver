@@ -25,6 +25,7 @@ def is_valid(node, value, nodes):
     for i in range(box_row, box_row + 3):
         for j in range(box_col, box_col + 3):
             if nodes[i][j].value == value and nodes[i][j] != node:
+                nodes[i][j].change_red()
                 return False
     
     return True
