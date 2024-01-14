@@ -1,7 +1,8 @@
 import pygame
-from Solver import WHITE, BLACK
 
 # Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
 GREY = (128, 128, 128)
 BLUE = (102, 178, 255)
 

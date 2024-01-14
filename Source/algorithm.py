@@ -25,7 +25,6 @@ def is_valid(node, value, nodes):
     for i in range(box_row, box_row + 3):
         for j in range(box_col, box_col + 3):
             if nodes[i][j].value == value and nodes[i][j] != node:
-                nodes[i][j].change_red()
                 return False
     
     return True
@@ -71,7 +70,8 @@ def solve_one_step(nodes):
                         pygame.time.delay(100)  # Another delay for better visualization
                         return True
                     nodes[i][j].value = 0
-    return False  # Return False if no steps were solved
+                return False  # Return False if no valid solution was found for the current cell
+    return True
 
 
 def solve_sudoku(nodes):
