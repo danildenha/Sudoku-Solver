@@ -22,6 +22,7 @@ SOLVING = False
 
 def main():
     global SOLVING
+    error_message = ""
     # Fill the Board (rows and cols are equal so use only ROWS)
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
     global curr
@@ -44,7 +45,12 @@ def main():
                 if event.unicode.isdigit():
                     if any(node.selected for row in nodes for node in row):
                         curr.value = int(event.unicode)
-                        curr.selected = False  # Deselect after inputting number
+                        if is_valid(curr, curr.value, nodes):
+                            curr.selected = False  # Deselect after inputting number
+                            error_message = ""
+                        else:
+                            error_message = "Invalid Move! Try Again."
+                            curr.value = 0 
 
                 elif event.key == pygame.K_BACKSPACE:
                     curr.value = 0
@@ -73,6 +79,12 @@ def main():
             for node in row:
                 node.draw(win, font)
         draw(win, BLACK)
+
+        if error_message:
+            error_text = font.render(error_message, True, (255, 0, 0))
+            error_rect = error_text.get_rect(center=(WIDTH // 2, WIDTH + 20))
+            win.blit(error_text, error_rect)
+
         pygame.display.update()
 
     pygame.quit()
