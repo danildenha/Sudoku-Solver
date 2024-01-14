@@ -36,7 +36,7 @@ def solve_sudoku_step_by_step(nodes):
                 for value in range(1, ROWS + 1):
                     nodes[i][j].value = value
                     if is_valid(nodes[i][j], value, nodes):
-                        pygame.time.delay(100)  # Add a delay to visualize the solving step
+                        pygame.time.delay(50)  # Add a delay to visualize the solving step
                         win.fill(WHITE)
                         for row in nodes:
                             for node in row:
@@ -44,7 +44,7 @@ def solve_sudoku_step_by_step(nodes):
                         draw(win, BLACK)
                         pygame.display.update()
                         pygame.event.get()  # Handle events to avoid freezing
-                        pygame.time.delay(100)  # Another delay for better visualization
+                        pygame.time.delay(50)  # Another delay for better visualization
                         if solve_sudoku_step_by_step(nodes):
                             return True
                     nodes[i][j].value = 0
