@@ -5,12 +5,15 @@ from node import Node
 from algorithm import *
 
 pygame.init()
+
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+
 # Window and cell sizes
 ROWS = 9
 WIDTH = 720
+
 # Set up the window
 win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
