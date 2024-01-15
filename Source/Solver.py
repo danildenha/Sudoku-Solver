@@ -28,7 +28,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-                
+
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 clicked_pos = pygame.mouse.get_pos()
                 row, col = get_position(clicked_pos, Node)
@@ -57,11 +57,11 @@ def main():
                         print("Sudoku Solved!")
                     else:
                         print("No solution exists")
-                """elif event.key == pygame.K_c:
-                    if solve_one_step(nodes):
+                elif event.key == pygame.K_c:
+                    if solve_one_step(nodes, row, col):
                         print("Here is a hint!")
                     else:
-                        print("No solution exists")"""
+                        print("No solution exists")
 
         # Update the display outside of the event loop
         win.fill(WHITE)

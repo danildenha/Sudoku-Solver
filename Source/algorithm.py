@@ -64,22 +64,16 @@ def solve_sudoku(nodes):
                 return False
     return True
 
-"""def solve_one_step(nodes):
+def solve_one_step(nodes):
     # Copy the initial state of the nodes
     initial_state = [[node.value for node in row] for row in nodes]
 
     # Solve the entire Sudoku puzzle
-    solve_sudoku(nodes)
+    solve_sudoku(initial_state)
 
     # Reveal one step using solve_one_step
-    for i in range(ROWS):
-        for j in range(ROWS):
-            if initial_state[i][j] == 0:
-                # Reset nodes to the initial state
-                for row in range(ROWS):
-                    for col in range(ROWS):
-                        nodes[row][col].value = initial_state[row][col]
 
-                # Use solve_one_step to reveal one value
-                solve_one_step(nodes)
-                return"""
+    if nodes[row][col] == 0:
+        # Reset nodes to the initial state
+        nodes[row][col].value = initial_state[row][col]
+        return
