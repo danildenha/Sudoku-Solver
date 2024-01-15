@@ -4,7 +4,6 @@ from display import draw
 from node import Node
 from algorithm import *
 
-
 pygame.init()
 # Colors
 WHITE = (255, 255, 255)
