@@ -22,6 +22,7 @@ SOLVING = False
 
 def main():
     global SOLVING
+    reveal_position = (None, None)
     error_message = ""
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
     global curr
@@ -66,7 +67,7 @@ def main():
                         print("No solution exists")
                 elif event.key == pygame.K_c:
                     if solve_one_step(nodes):
-                        print("Here is a hint Solved!")
+                        print("Here is a hint!")
                     else:
                         print("No solution exists")
 

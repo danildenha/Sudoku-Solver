@@ -52,21 +52,24 @@ def solve_sudoku_step_by_step(nodes):
     return True
 
 def solve_one_step(nodes):
+    # Copy the initial state of the nodes
+    initial_state = [[node.value for node in row] for row in nodes]
+
+    # Solve the entire Sudoku puzzle
+    solve_sudoku(nodes)
+
+    # Reveal one step using solve_one_step
     for i in range(ROWS):
         for j in range(ROWS):
-            if nodes[i][j].value == 0:
-                for value in range(1, ROWS + 1):
-                    if is_valid(nodes[i][j], value, nodes):
-                        nodes[i][j].value = value
-                        pygame.time.delay(50) # Add a delay to visualize the solving step
-                        draw(win, BLACK)
-                        pygame.display.update()
-                        pygame.event.get()  # Handle events to avoid freezing
-                        pygame.time.delay(50)  # Another delay for better visualization
-                        if solve_sudoku_step_by_step(nodes):
-                            return True
-                return False
-    return True
+            if initial_state[i][j] == 0:
+                # Reset nodes to the initial state
+                for row in range(ROWS):
+                    for col in range(ROWS):
+                        nodes[row][col].value = initial_state[row][col]
+
+                # Use solve_one_step to reveal one value
+                solve_one_step(nodes)
+                return
 
 
 
@@ -77,6 +80,7 @@ def solve_sudoku(nodes):
                 for value in range(1, ROWS + 1):
                     nodes[row][col].value = value
                     if is_valid(nodes[row][col], value, nodes) and solve_sudoku(nodes):
+                        nodes[row][col].value = value
                         return True
                     nodes[row][col].value = 0
                 return False
