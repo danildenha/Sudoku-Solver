@@ -22,7 +22,7 @@ class Node:
         else:
             color = BLACK
             # Change the background color based on the position in the Sudoku grid
-            if (self.row in [1, 4] and self.col in [0, 2, 6, 8]) or (self.row in [0, 2, 3, 4, 6, 7, 8] and self.col in [3, 5]):
+            if ((self.row in range(3) or self.row in range(6,9)) and self.col in range(3, 6)) or (self.row in [0, 2, 3, 4, 6, 7, 8] and self.col in [3, 5]):
                 bg = PINK
             else:
                 bg = WHITE
