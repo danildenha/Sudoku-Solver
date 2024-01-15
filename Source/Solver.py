@@ -1,4 +1,3 @@
-# ___________________________________________________NOT FINISHED YET____________________________________________________________
 import pygame
 from display import draw
 from node import Node
