@@ -67,14 +67,15 @@ def solve_sudoku(nodes):
 
 def solve_one_step(nodes, curr):
     # Copy the initial state of the nodes
+    global initial_state 
     initial_state = copy.deepcopy(nodes)
+    row1 = curr.row
+    col1 = curr.col
 
-    # Solve the entire Sudoku puzzle
+    # Solve the entire Sudoku puzzle and store it in initial state
     solve_sudoku(initial_state)
 
     # Reveal one step using solve_one_step
-
     if curr.value == 0:
-        # Reset nodes to the initial state
-        curr.value = initial_state[row][col]
+        curr.value = initial_state[row1][col1].value
         return
