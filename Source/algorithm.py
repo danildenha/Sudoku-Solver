@@ -1,4 +1,5 @@
 import pygame
+import copy
 import collections
 from Solver import BLACK, WHITE, win, font, Node, ROWS, draw
 
@@ -66,7 +67,7 @@ def solve_sudoku(nodes):
 
 def solve_one_step(nodes, curr):
     # Copy the initial state of the nodes
-    initial_state = [[node.value for node in row] for row in nodes]
+    initial_state = copy.deepcopy(nodes)
 
     # Solve the entire Sudoku puzzle
     solve_sudoku(initial_state)
