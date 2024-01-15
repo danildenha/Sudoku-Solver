@@ -16,14 +16,9 @@ WIDTH = 720
 win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
 font = pygame.font.Font(None, 60)
-
 #=========================================================================================
-SOLVING = False
 
 def main():
-    global SOLVING
-    reveal_position = (None, None)
-    error_message = ""
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
     global curr
     curr = nodes[0][0]
@@ -54,7 +49,6 @@ def main():
                     curr.selected = False
 
                 elif event.key == pygame.K_SPACE:
-                        SOLVING = True
                         solve_sudoku_step_by_step(nodes)  # Call step-by-step solving function
 
                 elif event.key == pygame.K_s:

@@ -51,6 +51,19 @@ def solve_sudoku_step_by_step(nodes):
                 return False
     return True
 
+def solve_sudoku(nodes):
+    for row in range(ROWS):
+        for col in range(ROWS):
+            if nodes[row][col].value == 0:
+                for value in range(1, ROWS + 1):
+                    nodes[row][col].value = value
+                    if is_valid(nodes[row][col], value, nodes) and solve_sudoku(nodes):
+                        nodes[row][col].value = value
+                        return True
+                    nodes[row][col].value = 0
+                return False
+    return True
+
 """def solve_one_step(nodes):
     # Copy the initial state of the nodes
     initial_state = [[node.value for node in row] for row in nodes]
@@ -70,18 +83,3 @@ def solve_sudoku_step_by_step(nodes):
                 # Use solve_one_step to reveal one value
                 solve_one_step(nodes)
                 return"""
-
-
-
-def solve_sudoku(nodes):
-    for row in range(ROWS):
-        for col in range(ROWS):
-            if nodes[row][col].value == 0:
-                for value in range(1, ROWS + 1):
-                    nodes[row][col].value = value
-                    if is_valid(nodes[row][col], value, nodes) and solve_sudoku(nodes):
-                        nodes[row][col].value = value
-                        return True
-                    nodes[row][col].value = 0
-                return False
-    return True
