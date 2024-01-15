@@ -5,6 +5,7 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREY = (128, 128, 128)
 BLUE = (102, 178, 255)
+PINK = (255, 182, 193)
 
 class Node:
     width = 80
@@ -20,7 +21,11 @@ class Node:
             bg = BLUE
         else:
             color = BLACK
-            bg = WHITE
+            # Change the background color based on the position in the Sudoku grid
+            if (self.row in [1, 5] and self.col in [0, 2, 6, 8]) or (self.row in [0, 2, 3, 4, 6, 7, 8] and self.col in [3, 5]):
+                bg = PINK
+            else:
+                bg = WHITE
 
         pygame.draw.rect(win, bg, (self.col * Node.width, self.row * Node.width, Node.width, Node.width))
         text = font.render(str(self.value), True, color)
