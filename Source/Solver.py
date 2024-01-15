@@ -54,22 +54,19 @@ def main():
                     curr.selected = False
 
                 elif event.key == pygame.K_SPACE:
-                    if not SOLVING:
                         SOLVING = True
-                        solve_sudoku_step_by_step(nodes)  # Call a new step-by-step solving function
-                    else:
-                        SOLVING = False
+                        solve_sudoku_step_by_step(nodes)  # Call step-by-step solving function
 
                 elif event.key == pygame.K_s:
                     if solve_sudoku(nodes):
                         print("Sudoku Solved!")
                     else:
                         print("No solution exists")
-                elif event.key == pygame.K_c:
+                """elif event.key == pygame.K_c:
                     if solve_one_step(nodes):
                         print("Here is a hint!")
                     else:
-                        print("No solution exists")
+                        print("No solution exists")"""
 
         # Update the display outside of the event loop
         win.fill(WHITE)

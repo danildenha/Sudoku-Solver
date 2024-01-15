@@ -51,7 +51,7 @@ def solve_sudoku_step_by_step(nodes):
                 return False
     return True
 
-def solve_one_step(nodes):
+"""def solve_one_step(nodes):
     # Copy the initial state of the nodes
     initial_state = [[node.value for node in row] for row in nodes]
 
@@ -69,7 +69,7 @@ def solve_one_step(nodes):
 
                 # Use solve_one_step to reveal one value
                 solve_one_step(nodes)
-                return
+                return"""
 
 
 
