@@ -17,6 +17,12 @@ win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
 font = pygame.font.Font(None, 60)
 #=========================================================================================
+def reset(nodes):
+    for i in range(ROWS):
+        for j in range(ROWS):
+            nodes[i][j].value = 0
+    return
+
 
 def main():
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
@@ -58,10 +64,9 @@ def main():
                     else:
                         print("No solution exists")
                 elif event.key == pygame.K_c:
-                    if solve_one_step(nodes, curr):
-                        print("Here is a hint!")
-                    else:
-                        print("No solution exists")
+                    solve_one_step(nodes, curr)
+                elif event.key == pygame.K_r:
+                    reset(nodes)
 
         # Update the display outside of the event loop
         win.fill(WHITE)
