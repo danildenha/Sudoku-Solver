@@ -3,6 +3,12 @@ import copy
 import collections
 from Solver import BLACK, WHITE, win, font, Node, ROWS, draw
 
+def reset(nodes):
+    for i in range(ROWS):
+        for j in range(ROWS):
+            nodes[i][j].value = 0
+    return
+
 def get_position(pos, Node):
     x, y = pos
     row = y // Node.width
@@ -67,7 +73,6 @@ def solve_sudoku(nodes):
 
 def solve_one_step(nodes, curr):
     # Copy the initial state of the nodes
-    global initial_state 
     initial_state = copy.deepcopy(nodes)
     row1 = curr.row
     col1 = curr.col

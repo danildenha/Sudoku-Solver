@@ -17,12 +17,6 @@ win = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("danildenha Sudoku Solver")
 font = pygame.font.Font(None, 60)
 #=========================================================================================
-def reset(nodes):
-    for i in range(ROWS):
-        for j in range(ROWS):
-            nodes[i][j].value = 0
-    return
-
 
 def main():
     nodes = [[Node(0, i, j) for j in range(ROWS)] for i in range(ROWS)]
