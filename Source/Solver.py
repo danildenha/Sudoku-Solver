@@ -28,6 +28,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+                
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 clicked_pos = pygame.mouse.get_pos()
                 row, col = get_position(clicked_pos, Node)
