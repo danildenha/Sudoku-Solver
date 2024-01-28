@@ -35,6 +35,22 @@ Implementation Details
 Object-Oriented Programming: The code follows an object-oriented approach to encapsulate the Sudoku board and its functionalities.
 Usage Instructions
 
-Launch the application by running main.py.
+Launch the application by running ```main.py```
 Interact with the Sudoku board using the specified key commands.
 Enjoy solving Sudoku puzzles with helpful features and visualizations.
+nteract with the Sudoku board using the specified key commands.
+Enjoy solving Sudoku puzzles with helpful features and visualizations.
+Known Issues
+
+At present, there are no known issues. If you encounter any problems, please report them in the GitHub issues section.
+Contribution Guidelines
+
+If you would like to contribute to the project, please follow these guidelines:
+
+Fork the repository.
+Create a new branch for your feature or bug fix.
+Make your changes and submit a pull request.
+License
+
+This Sudoku Solving App is licensed under the MIT License - see the LICENSE file for details.
+
