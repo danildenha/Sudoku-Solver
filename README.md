@@ -15,19 +15,13 @@ pip install pygame
 ## How to Run
 
 1. ### Clone the repository to your local machine:
-Copy code
-```bash
-git clone https://github.com/your-username/sudoku-solving-app.git
-```
+```git clone https://github.com/your-username/sudoku-solving-app.git```
 2. ### Navigate to the project directory:
-bash
-Copy code
-cd sudoku-solving-app
-Run the main Python script:
-bash
-Copy code
-python main.py
-Features
+```cd sudoku-solving-app```
+3. ### Run the main Python script:
+```python main.py```
+
+## Features
 
 Sudoku Board Interaction:
 Adding Numbers: Left-click on a cell and press a number key to add a number to the board.
