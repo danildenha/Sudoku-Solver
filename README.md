@@ -53,7 +53,3 @@ Contribution Guidelines
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
 3. Make your changes and submit a pull request.
-
-## License
-This Sudoku Solving App is licensed under the MIT License - see the LICENSE file for details.
-
